@@ -24,13 +24,13 @@ wrap_goals <- sum(nhl_goals$G.Wrap)
 wrist_goals <- sum(nhl_goals$G.Wrst)
 
 sum_goals <- data.frame(Number_of_Goals = c(backhand_goals, deflection_goals, slap_goals, snap_goals, tip_goals, wrap_goals, wrist_goals),
-          Shot_Type = c("Backhand Goals", "Deflection Goals", "Slap Shot Goals", "Snap Shot Goals", "Tip Goals", "Warp Around Goals", "Wrist Shot Goals"))
+          Shot_Type = c("Backhand Goals", "Deflection Goals", "Slap Shot Goals", "Snap Shot Goals", "Tip in Goals", "Warp Around Goals", "Wrist Shot Goals"))
 
 sum_goals$freq <- as.numeric(sum_goals[,1]) / total_goals
 
 ggplot(sum_goals, aes(x = reorder(Shot_Type,-freq), y = freq)) +
       geom_bar(stat = "identity", fill = "skyblue4") +
-      labs(title = "Frequency of Goals Based off Shot Type", subtitle = "From the 2017-18 NHL Season", caption = "7,449 Goals Scored") +
+      labs(title = "Frequency of Goals Based off Shot Type", subtitle = "2017-18 NHL Season", caption = "7,449 Goals Scored") +
       xlab("Type of Shot") +
       ylab("Frequency of Goals") +
       theme_wsj() + 
@@ -50,7 +50,7 @@ wrist_shots <- sum(nhl_shots$S.Wrst)
 
 
 sum_shots <- data.frame(Number_of_Shots = c(backhand_shots, deflection_shots, slap_shots, snap_shots, tip_shots, wrap_shots, wrist_shots),
-                        Shot_Type = c("Backhand Shots", "Deflection Shots", "Slap Shot Shots", "Snap Shot Shots", "Tip Shots", "Warp Around Shots", "Wrist Shot Shots"))
+                        Shot_Type = c("Backhand Shots", "Deflection Shots", "Slap Shot Shots", "Snap Shot Shots", "Tip in Shots", "Warp Around Shots", "Wrist Shot Shots"))
 
 total_shots <- sum(nhl_shots)
 
@@ -65,7 +65,7 @@ sum_shots$freq <- as.numeric(sum_shots[,1]) / total_shots
 
 ggplot(sum_shots, aes(x = reorder(Shot_Type,-freq), y = freq)) +
   geom_bar(stat = "identity", fill = "skyblue4") +
-  labs(title = "Frequency of Shots Based off Shot Type", subtitle = "From the 2017-18 NHL Season", caption = "81,228 Shots on Goal") +
+  labs(title = "Frequency of Shots Based off Shot Type", subtitle = "2017-18 NHL Season", caption = "81,228 Shots on Goal") +
   xlab("Type of Shot") +
   ylab("Frequency of Shots") +
   theme_wsj() +
@@ -77,7 +77,7 @@ sum_goals$ShootingPer <- as.numeric(sum_goals[,1]) / as.numeric(sum_shots[,1])
 
 ggplot(sum_goals, aes(x = reorder(Shot_Type,-ShootingPer), y = ShootingPer)) +
   geom_bar(stat = "identity", fill = "skyblue4") +
-  labs(title = "Most Effective Shot", subtitle = "From the 2017-18 NHL Season") +
+  labs(title = "Most Effective Shot", subtitle = "2017-18 NHL Season") +
   xlab("Type of Shot") +
   ylab("Shooting Percentage") +
   theme_wsj() +
